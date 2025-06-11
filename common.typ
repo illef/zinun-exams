@@ -31,7 +31,7 @@
   #line(length: 100%, stroke: 0.2pt, start: (0%, 0%-51pt))
 ]
 
-#let vocabulary_test(
+#let voc(
   question,
 ) = {
   grid(columns:(1fr,)*2,
@@ -39,11 +39,11 @@
   )
 }
 
-#let han_to_vocabulary_test(
-  question,
+#let eng_writing(
+  sentence,
 ) = {
   grid(columns:(1fr,)*2,
-    [#question],[#english_guidelines()],
+    [#sentence],[#english_guidelines()],
   )
 }
 
@@ -52,7 +52,14 @@
   han_word
 ) = {
   grid(columns:(1fr,)*2, gutter:13pt,
-    [#han_to_vocabulary_test(han_word)],
-    [#vocabulary_test(eng_word)],
+    [#eng_writing(han_word)],
+    [#voc(eng_word)],
   )
+}
+
+#let kor_writing(content) = {
+  text(
+    fill: white,
+    stroke: (dash: "solid", thickness: 0.5pt, paint: rgb(255, 182, 193)),
+  )[#content]
 }
